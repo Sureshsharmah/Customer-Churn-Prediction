@@ -1,3 +1,54 @@
+🔮 Telco Churn Prediction + MLOps Pipeline
+End-to-end solution from EDA to Kubernetes deployment
+
+🛠️ Full Tech Stack
+Category	Tools Used
+Data Science	Pandas, NumPy, Matplotlib/Seaborn, Jupyter, Scikit-learn
+ML/DL	XGBoost, TensorFlow/Keras (Neural Nets), SHAP, Feature-engine
+API	FastAPI (with Swagger docs), Flask (alternate), Uvicorn
+Infra	Docker, Docker-compose, Kubernetes (minikube), Prometheus+Grafana
+Dev Tools	VS Code, Git, GitHub Actions, pytest, Black (formatting)
+🚀 How to Run
+Option 1: Local Development (VS Code)
+bash
+# 1. Clone and setup
+git clone https://github.com/yourrepo/telco-churn.git
+cd telco-churn
+python -m venv venv && source venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt
+
+# 2. Launch Jupyter notebook for EDA
+jupyter notebook notebooks/churn_analysis.ipynb
+
+# 3. Run FastAPI locally
+uvicorn api.main:app --reload  # Live at http://localhost:8000/docs
+Option 2: Docker Production
+bash
+# Build and run with monitoring
+docker-compose up -d  # Includes:
+                      # - API (FastAPI on :8000)
+                      # - Prometheus (metrics on :9090)
+                      # - Grafana (dashboards on :3000)
+Option 3: Kubernetes (minikube)
+bash
+kubectl apply -f k8s/deployment.yaml  # Deploys:
+                                      # - API service
+                                      # - Model monitoring
+                                      # - Auto-scaling
+🌟 Key Features
+95% AUC-ROC model with business rule overrides
+
+VS Code devcontainer pre-configured
+
+CI/CD: GitHub Actions for auto-testing + Docker Hub pushes
+
+Infra-as-Code: Kubernetes manifests included
+
+
+
+
+
+
 ## Production Scaling
 
 ### Option 1: Kubernetes
