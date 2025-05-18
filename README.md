@@ -12,7 +12,7 @@ Dev Tools	VS Code, Git, GitHub Actions, pytest, Black (formatting)
 Option 1: Local Development (VS Code)
 bash
 # 1. Clone and setup
-git clone https://github.com/yourrepo/telco-churn.git
+git clone [https://github.com/Sureshsharmah/telco-churn.git](https://github.com/Sureshsharmah/Customer-Churn-Prediction)
 cd telco-churn
 python -m venv venv && source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
