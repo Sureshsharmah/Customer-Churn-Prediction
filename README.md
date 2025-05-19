@@ -11,19 +11,71 @@ Dev Tools	VS Code, Git, GitHub Actions, pytest, Black (formatting)
 🚀 How to Run
 Option 1: Local Development (VS Code)
 bash
+
+Run Data Science Pipeline (Jupyter)
+
+Problem Statement 1: Data Science Task
+python -m venv venv
+venv\Scripts\activate
+cd telco-churn-project
+cd model_development
+pip install -r requirements.txt
+python app.py
+
+Problem Statement 2: MLOps Task 
+cd telco-churn-project
+cd mlops_deployment
+pip install -r requirements.txt
+cd app
+# 3. Run FastAPI locally
+uvicorn api.main:app --reload
+will be directed to - http://localhost:8000/docs
+
+# 4. Run Docker
+# Check Docker version (confirms Docker is installed)
+docker --version
+
+# Verify Docker is running
+docker info
+
+# List running containers (should be empty if nothing is running)
+docker ps
+
+# List available Docker images
+docker images
+
+Build your Docker image
+# Build the image with tag 'churn-prediction'
+docker build -t churn-prediction .
+
+# Run the container, mapping port 5000 (host) to 5000 (container)
+docker run -p 5000:5000 churn-prediction
+
+# List running containers
+docker ps
+
+# Check logs (if running in detached mode)
+docker logs churn-app
+
+# Stop the container (if running in foreground, use Ctrl+C)
+docker stop churn-app
+
+# Remove the container (optional)
+docker rm churn-app
+
+
 # 1. Clone and setup
 git clone [https://github.com/Sureshsharmah/telco-churn.git](https://github.com/Sureshsharmah/Customer-Churn-Prediction)
 cd telco-churn
-python -m venv venv && source venv/bin/activate  # Linux/Mac
+python -m venv venv && source venv/bin/activate  
 pip install -r requirements.txt
 
 # 2. Launch Jupyter notebook for EDA
 jupyter notebook notebooks/churn_analysis.ipynb
 
-# 3. Run FastAPI locally
-uvicorn api.main:app --reload  # Live at http://localhost:8000/docs
+
+
 Option 2: Docker Production
-bash
 # Build and run with monitoring
 docker-compose up -d  # Includes:
                       # - API (FastAPI on :8000)
@@ -43,8 +95,6 @@ VS Code devcontainer pre-configured
 CI/CD: GitHub Actions for auto-testing + Docker Hub pushes
 
 Infra-as-Code: Kubernetes manifests included
-
-
 
 
 
